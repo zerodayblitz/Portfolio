@@ -95,3 +95,5 @@ async function loadLatestVideo() {
     `;
   }
 }
+
+window.addEventListener('DOMContentLoaded', loadLatestVideo);
