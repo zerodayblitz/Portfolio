@@ -1018,4 +1018,22 @@ body.loaded .home-img {
     align-items: center;
     text-align: center;
   }
+
+}
+.contact-subtitle {
+    text-align: center;
+    font-size: 1.9rem;
+    color: var(--text-color);
+    margin-top: -1rem;
+    margin-bottom: 2rem;
+    opacity: 0.9;
+}
+
+.contact-subtitle::before {
+    content: "";
+    display: block;
+    width: 60px;
+    height: 2px;
+    background: var(--main-color);
+    margin: 0 auto 1rem;
 }
