@@ -2,6 +2,9 @@ window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
+// ========================================
+// INTERSECTION OBSERVER (SCROLL ANIMATIONS)
+// ========================================
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -15,6 +18,9 @@ document.querySelectorAll(".reveal, .reveal-from-bottom, .reveal-from-left, .rev
   revealObserver.observe(el);
 });
 
+// ========================================
+// MOBILE MENU TOGGLE
+// ========================================
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('.navbar');
 
@@ -25,36 +31,59 @@ if (menuIcon && navbar) {
   });
 }
 
-const contactForm = document.getElementById("contact-form");
-const formStatus = document.getElementById("form-status");
+// ========================================
+// CONTACT FORM WITH CLOUDFLARE RATE LIMITING
+// ========================================
+const contactForm = document.getElementById('contact-form');
+const submitButton = contactForm?.querySelector('button[type="submit"]');
 
-if (contactForm && formStatus) {
-  contactForm.addEventListener("submit", async (e) => {
+if (contactForm && submitButton) {
+  contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
-    formStatus.textContent = "Sending...";
-
+    
+    // Disable submit button
+    submitButton.disabled = true;
+    const originalButtonText = submitButton.textContent;
+    submitButton.textContent = 'Sending...';
+    
     try {
-      const response = await fetch(contactForm.action, {
-        method: "POST",
-        body: new FormData(contactForm),
-        headers: { Accept: "application/json" }
+      // Get form data
+      const formData = new FormData(contactForm);
+      
+      // Send to Cloudflare Worker
+      const response = await fetch('https://zerodayblitz-angelsantiago3200.workers.dev', {
+        method: 'POST',
+        body: formData
       });
-
-      if (response.ok) {
-        formStatus.textContent = "Message sent successfully!";
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        // Success!
+        alert('✅ Message sent successfully! Thank you for contacting me.');
         contactForm.reset();
-        document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
-        history.replaceState(null, "", "#contact");
       } else {
-        const data = await response.json().catch(() => null);
-        formStatus.textContent = data?.error || "Something went wrong. Try again.";
+        // Error or rate limited
+        if (result.error === 'RATE_LIMIT_EXCEEDED') {
+          alert(`⏱️ ${result.message}`);
+        } else {
+          alert(`❌ ${result.message}`);
+        }
       }
-    } catch {
-      formStatus.textContent = "Network error. Try again.";
+    } catch (error) {
+      alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
+      console.error('Form submission error:', error);
+    } finally {
+      // Re-enable submit button
+      submitButton.disabled = false;
+      submitButton.textContent = originalButtonText;
     }
   });
 }
 
+// ========================================
+// YOUTUBE LATEST VIDEO LOADER
+// ========================================
 async function loadLatestVideo() {
   const container = document.getElementById('latest-video-container');
   if (!container) return;
