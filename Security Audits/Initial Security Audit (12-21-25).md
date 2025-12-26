@@ -330,4 +330,4 @@ GitHub: https://github.com/zerodayblitz/Portfolio
 ---
 
 *Audit conducted by Claude (Anthropic AI) in collaboration with Angel Santiago*  
-*Version 2.0 | December 21, 2025*
+*Version 1.0 | December 21, 2025*
