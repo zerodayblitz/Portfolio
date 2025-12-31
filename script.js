@@ -32,7 +32,7 @@ if (menuIcon && navbar) {
 }
 
 // ========================================
-// CONTACT FORM WITH CLOUDFLARE RATE LIMITING
+// CONTACT FORM (FORMSPREE DIRECT)
 // ========================================
 const contactForm = document.getElementById('contact-form');
 
@@ -60,13 +60,12 @@ if (contactForm) {
       });
       
       if (response.ok) {
-        // Formspree success
         alert('✅ Message sent successfully! Thank you for contacting me.');
         contactForm.reset();
       } else {
-        // Formspree error
         const data = await response.json();
-        alert(`❌ ${data.error || 'An error occurred'}`);
+        const errorMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'An error occurred';
+        alert(`❌ ${errorMsg}`);
       }
     } catch (error) {
       console.error('Form submission error:', error);
@@ -125,7 +124,3 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
-
-
-
-
