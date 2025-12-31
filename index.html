@@ -209,22 +209,21 @@
 
   <section class="contact reveal-from-bottom" id="contact">
   <h2 class="section-title reveal-from-bottom">Contact <span>Me</span></h2>
-  <p class="contact-subtitle">Feel Free to Send All Business Inquiries Here! | One Submission Per Day.</p>
-  <form id="contact-form">
+  <p class="contact-subtitle">Feel Free to Send All Business Inquiries Here!</p>
+  <form action="https://formspree.io/f/xqezqppq" method="POST">
     <div class="input-group">
       <div class="input-box">
-        <input type="text" name="name" placeholder="Full Name" required autocomplete="name" maxlength="100">
-        <input type="email" name="email" placeholder="Email" required autocomplete="email" maxlength="100">
+        <input type="text" name="name" placeholder="Full Name" required autocomplete="name">
+        <input type="email" name="email" placeholder="Email" required autocomplete="email">
       </div>
       <div class="input-box">
-        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel" maxlength="20">
-        <input type="text" name="subject" placeholder="Subject" required maxlength="200">
+        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
+        <input type="text" name="subject" placeholder="Subject" required>
       </div>
     </div>
     <div class="input-group-2">
-      <textarea name="message" placeholder="Your Message" rows="10" required maxlength="5000"></textarea>
+      <textarea name="message" placeholder="Your Message" rows="10" required></textarea>
       <button type="submit" class="btn">Send Message</button>
-      <p id="form-status"></p>
     </div>
   </form>
 </section>
@@ -271,6 +270,7 @@
 </body>
 
 </html>
+
 
 
 
