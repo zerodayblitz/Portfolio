@@ -34,15 +34,27 @@ if (menuIcon && navbar) {
 // ========================================
 // CONTACT FORM (FORMSPREE DIRECT)
 // ========================================
-const contactForm = document.getElementById('contact-form');
-
-if (contactForm) {
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contact-form');
+  
+  if (!contactForm) {
+    console.error('Contact form not found! Check if id="contact-form" exists in HTML');
+    return;
+  }
+  
+  console.log('✅ Form found:', contactForm);
+  
   contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
     e.stopPropagation();
     
+    console.log('📧 Form submitted!');
+    
     const submitButton = this.querySelector('button[type="submit"]');
-    if (!submitButton) return;
+    if (!submitButton) {
+      console.error('Submit button not found!');
+      return;
+    }
     
     submitButton.disabled = true;
     const originalButtonText = submitButton.textContent;
@@ -50,6 +62,8 @@ if (contactForm) {
     
     try {
       const formData = new FormData(this);
+      
+      console.log('📤 Sending to Formspree...');
       
       const response = await fetch('https://formspree.io/f/xqezqppq', {
         method: 'POST',
@@ -59,16 +73,19 @@ if (contactForm) {
         }
       });
       
+      console.log('📥 Response status:', response.status);
+      
       if (response.ok) {
+        console.log('✅ Success!');
         alert('✅ Message sent successfully! Thank you for contacting me.');
         contactForm.reset();
       } else {
         const data = await response.json();
-        const errorMsg = data.errors ? data.errors.map(e => e.message).join(', ') : 'An error occurred';
-        alert(`❌ ${errorMsg}`);
+        console.error('❌ Error:', data);
+        alert('❌ Failed to send message. Please try again or email me directly at angelsantiago3200@gmail.com');
       }
     } catch (error) {
-      console.error('Form submission error:', error);
+      console.error('💥 Form submission error:', error);
       alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
     } finally {
       submitButton.disabled = false;
@@ -77,7 +94,7 @@ if (contactForm) {
     
     return false;
   });
-}
+});
 
 // ========================================
 // YOUTUBE LATEST VIDEO LOADER
@@ -124,3 +141,4 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
+
