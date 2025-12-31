@@ -51,7 +51,7 @@ if (contactForm && submitButton) {
       const formData = new FormData(contactForm);
       
       // Send to Cloudflare Worker
-      const response = await fetch('https://zerodayblitz-angelsantiago3200.workers.dev', {
+      const response = await fetch('https://formspree.io/f/xqezqppq', {
         method: 'POST',
         body: formData,
         headers: {
@@ -129,5 +129,6 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
+
 
 
