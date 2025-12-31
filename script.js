@@ -35,7 +35,7 @@ if (menuIcon && navbar) {
 // CONTACT FORM WITH CLOUDFLARE RATE LIMITING
 // ========================================
 const contactForm = document.getElementById('contact-form');
-const submitButton = contactForm?.querySelector('button[type="submit"]');
+const submitButton = contactForm?.querySelector('input[type="submit"], button[type="submit"]');
 
 if (contactForm && submitButton) {
   contactForm.addEventListener('submit', async function(e) {
@@ -126,3 +126,4 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
+
