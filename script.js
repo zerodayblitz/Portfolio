@@ -35,22 +35,22 @@ if (menuIcon && navbar) {
 // CONTACT FORM WITH CLOUDFLARE RATE LIMITING
 // ========================================
 const contactForm = document.getElementById('contact-form');
-const submitButton = contactForm?.querySelector('input[type="submit"], button[type="submit"]');
 
-if (contactForm && submitButton) {
+if (contactForm) {
   contactForm.addEventListener('submit', async function(e) {
     e.preventDefault();
+    e.stopPropagation();
     
-    // Disable submit button
+    const submitButton = this.querySelector('button[type="submit"]');
+    if (!submitButton) return;
+    
     submitButton.disabled = true;
     const originalButtonText = submitButton.textContent;
     submitButton.textContent = 'Sending...';
     
     try {
-      // Get form data
-      const formData = new FormData(contactForm);
+      const formData = new FormData(this);
       
-      // Send to Cloudflare Worker
       const response = await fetch('https://formspree.io/f/xqezqppq', {
         method: 'POST',
         body: formData,
@@ -59,28 +59,24 @@ if (contactForm && submitButton) {
         }
       });
       
-      const result = await response.json();
-      
-      if (result.success) {
-        // Success!
+      if (response.ok) {
+        // Formspree success
         alert('✅ Message sent successfully! Thank you for contacting me.');
         contactForm.reset();
       } else {
-        // Error or rate limited
-        if (result.error === 'RATE_LIMIT_EXCEEDED') {
-          alert(`⏱️ ${result.message}`);
-        } else {
-          alert(`❌ ${result.message}`);
-        }
+        // Formspree error
+        const data = await response.json();
+        alert(`❌ ${data.error || 'An error occurred'}`);
       }
     } catch (error) {
-      alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
       console.error('Form submission error:', error);
+      alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
     } finally {
-      // Re-enable submit button
       submitButton.disabled = false;
       submitButton.textContent = originalButtonText;
     }
+    
+    return false;
   });
 }
 
@@ -129,6 +125,7 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
+
 
 
 
