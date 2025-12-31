@@ -53,7 +53,10 @@ if (contactForm && submitButton) {
       // Send to Cloudflare Worker
       const response = await fetch('https://zerodayblitz-angelsantiago3200.workers.dev', {
         method: 'POST',
-        body: formData
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
       });
       
       const result = await response.json();
@@ -126,4 +129,5 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
+
 
