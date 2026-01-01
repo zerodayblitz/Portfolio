@@ -76,3 +76,48 @@ async function loadLatestVideo() {
 }
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
+
+// ========================================
+// CONTACT FORM (AJAX SUBMISSION)
+// ========================================
+document.addEventListener('DOMContentLoaded', function() {
+  const contactForm = document.getElementById('contact-form');
+  
+  if (contactForm) {
+    contactForm.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      
+      const submitButton = this.querySelector('button[type="submit"]');
+      if (!submitButton) return;
+      
+      submitButton.disabled = true;
+      const originalButtonText = submitButton.textContent;
+      submitButton.textContent = 'Sending...';
+      
+      try {
+        const formData = new FormData(this);
+        
+        const response = await fetch(this.action, {
+          method: 'POST',
+          body: formData,
+          headers: {
+            'Accept': 'application/json'
+          }
+        });
+        
+        if (response.ok) {
+          alert('✅ Message sent successfully! Thank you for contacting me.');
+          contactForm.reset();
+        } else {
+          alert('❌ Something went wrong. Please try again or email me directly at angelsantiago3200@gmail.com');
+        }
+      } catch (error) {
+        console.error('Form submission error:', error);
+        alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
+      } finally {
+        submitButton.disabled = false;
+        submitButton.textContent = originalButtonText;
+      }
+    });
+  }
+});
