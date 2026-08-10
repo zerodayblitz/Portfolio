@@ -142,8 +142,8 @@ section {
 .home-content {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  text-align: right;
+  align-items: flex-start;
+  text-align: left;
 }
 
 .home-content h1 {
@@ -155,7 +155,28 @@ section {
 
 .home-content h3 {
   margin: 1rem 0;
-  font-size: 4rem;
+  font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+  font-size: 2.8rem;
+  font-weight: 500;
+  color: var(--text-muted, #a7aeba);
+  min-height: 1.5em;
+}
+
+.role i { font-style: normal; }
+
+.role .prompt {
+  color: var(--main-color);
+  margin-right: 0.5rem;
+}
+
+.role .cursor {
+  display: inline-block;
+  width: 0.9rem;
+  height: 1em;
+  margin-left: 0.3rem;
+  background: var(--main-color);
+  vertical-align: text-bottom;
+  animation: caret-blink 1.2s ease-in-out infinite;
 }
 
 .home-content p {

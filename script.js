@@ -121,3 +121,44 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   }
 });
+(function () {
+  const el = document.getElementById('roleText');
+  if (!el) return;
+
+  const roles = [
+    'penetration tester',
+    'security researcher',
+    'ctf player',
+    'tool builder'
+  ];
+
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    el.textContent = roles[0];
+    return;
+  }
+
+  let r = 0, c = 0, deleting = false;
+
+  (function type() {
+    const word = roles[r];
+
+    if (!deleting) {
+      c++;
+      el.textContent = word.slice(0, c);
+      if (c === word.length) {
+        deleting = true;
+        return setTimeout(type, 1900);
+      }
+      return setTimeout(type, 62 + Math.random() * 55);
+    }
+
+    c--;
+    el.textContent = word.slice(0, c);
+    if (c === 0) {
+      deleting = false;
+      r = (r + 1) % roles.length;
+      return setTimeout(type, 420);
+    }
+    return setTimeout(type, 32);
+  })();
+})();
