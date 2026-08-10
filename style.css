@@ -1059,7 +1059,7 @@ body.loaded .home-img {
   }
 
   .home {
-    flex-direction: column-reverse;
+    flex-direction: column;
     margin: 5rem 0;
     gap: 5rem;
   }
