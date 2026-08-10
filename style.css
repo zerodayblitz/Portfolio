@@ -55,15 +55,35 @@ body {
 }
 
 .logo {
-  font-size: 3rem;
+  font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
   color: var(--text-color);
-  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  white-space: nowrap;
   cursor: pointer;
   transition: 0.3s ease-in-out;
 }
 
-.logo:hover {
-  transform: scale(1.1);
+.logo .sigil {
+  color: var(--main-color);
+  font-style: normal;
+}
+
+.logo .caret {
+  width: 8px;
+  height: 1.8rem;
+  background: var(--main-color);
+  display: inline-block;
+  animation: caret-blink 1.2s ease-in-out infinite;
+}
+
+@keyframes caret-blink {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: 0; }
 }
 
 span {
@@ -87,21 +107,24 @@ span {
 }
 
 .gradient-btn {
-  font-size: 1.8rem;
-  padding: 1rem 2rem;
-  border-radius: 3rem;
-  background: linear-gradient(270deg, #B2FF89 10%, #63EC71 100%);
-  letter-spacing: 1px;
+  font-family: var(--font-mono, "JetBrains Mono", ui-monospace, Consolas, monospace);
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 1.2rem 2.3rem;
+  border-radius: 6px;
+  background: transparent;
+  border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.12));
+  color: var(--text-muted, #a7aeba);
   cursor: pointer;
-  transition: 0.3s ease-in-out;
-  color: white;
-  border: none;
   text-wrap: nowrap;
-  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.35);
+  transition: border-color 0.22s, color 0.22s, background 0.22s;
 }
 
 .gradient-btn:hover {
-  transform: scale(1.05);
+  border-color: var(--accent-line);
+  background: var(--accent-tint);
+  color: var(--text-color);
 }
 
 section {
