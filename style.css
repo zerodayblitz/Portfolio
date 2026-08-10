@@ -217,8 +217,8 @@ section {
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
-  box-shadow: 0 0 25px var(--main-color);
-  transition: 0.4s ease-in-out;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--main-color) 18%, transparent);
+  transition: box-shadow 0.4s ease;
 }
 
 .home-content,
@@ -259,9 +259,7 @@ body.loaded .home-img {
 }
 
 .home-img img:hover {
-  box-shadow: 0 0 25px var(--main-color),
-              0 0 50px var(--main-color),
-              0 0 100px var(--main-color);
+  box-shadow: 0 0 55px color-mix(in srgb, var(--main-color) 50%, transparent);
 }
 
 .social-icons {
@@ -364,14 +362,14 @@ body.loaded .home-img {
   transform: translateY(1px);
 }
 
-.btn-group a:nth-of-type(2) {
+.btn-outline {
   background: transparent;
   color: var(--text-muted, #a7aeba);
   border: 1px solid var(--line-strong, rgba(255, 255, 255, 0.12));
   box-shadow: none;
 }
 
-.btn-group a:nth-of-type(2):hover {
+.btn-outline:hover {
   background: var(--accent-tint);
   border-color: var(--accent-line);
   color: var(--text-color);
@@ -403,14 +401,12 @@ body.loaded .home-img {
   border-radius: 50%;
   object-fit: cover;
   object-position: center;
-  box-shadow: 0 0 25px var(--main-color);
-  transition: 0.4s ease-in-out;
+  box-shadow: 0 0 40px color-mix(in srgb, var(--main-color) 18%, transparent);
+  transition: box-shadow 0.4s ease;
 }
 
 .about-img img:hover {
-  box-shadow: 0 0 25px var(--main-color),
-              0 0 50px var(--main-color),
-              0 0 100px var(--main-color);
+  box-shadow: 0 0 55px color-mix(in srgb, var(--main-color) 32%, transparent);
 }
 
 .about-content h2 {
