@@ -1100,6 +1100,14 @@ body.loaded .home-img {
   font-size: 4.5rem;
   margin-bottom: 3rem;
 }
+
+.contact-intro {
+  text-align: center;
+}
+
+.contact-intro p {
+  margin-inline: auto;
+}
 }
 
 @media (max-width: 768px) {
