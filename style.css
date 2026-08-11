@@ -508,7 +508,7 @@ body.loaded .home-img {
 .about {
   display: grid;
   min-height: auto;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: clamp(3rem, 6vw, 7rem);
   align-items: center;
   background-color: rgba(255, 255, 255, 0.022);
@@ -565,7 +565,7 @@ body.loaded .home-img {
   background: rgba(255, 255, 255, 0.02);
 }
 
-.term-bar i {
+.term-bar i:not(.term-title) {
   width: 9px;
   height: 9px;
   border-radius: 50%;
