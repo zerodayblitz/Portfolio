@@ -77,9 +77,9 @@ async function loadLatestVideo() {
   } catch (error) {
     console.error('Error loading video:', error);
     container.innerHTML = `
-      <p style="color: var(--text-color); text-align: center; padding: 2rem;">
-        Unable to load video. <a href="https://youtube.com/@0dayblitz" target="_blank" rel="noopener noreferrer" style="color: var(--main-color);">Visit my channel</a>
-      </p>
+      <div class="video-soon">
+        <i class="video-soon-title">Coming soon</i>
+      </div>
     `;
   }
 }

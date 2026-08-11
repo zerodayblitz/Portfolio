@@ -8,7 +8,6 @@
   <title>Angel Santiago | Portfolio</title>
   
   <!-- Security Headers -->
-  <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' https://unpkg.com https://api.allorigins.win https://www.youtube.com; style-src 'self' 'unsafe-inline' https://unpkg.com https://fonts.googleapis.com; img-src 'self' data: https:; font-src 'self' https://fonts.gstatic.com https://unpkg.com; frame-src https://www.youtube.com https://www.youtube-nocookie.com; connect-src 'self' https://api.allorigins.win https://formspree.io; object-src 'none'; base-uri 'self'; form-action 'self' https://formspree.io;">
   <meta http-equiv="X-Content-Type-Options" content="nosniff">
   <meta name="referrer" content="strict-origin-when-cross-origin">
   
@@ -102,23 +101,43 @@
   </section>
 
   <section class="about" id="about">
-    <div class="about-img reveal from-bottom">
-      <img src="headshot.jpg" alt="Angel Santiago photo">
-    </div>
+      <div class="about-content reveal from-bottom">
+        <h2>About <span>Me</span></h2>
+        <p>My passion for tech began before my preteen years. I built my first PC at the age of fourteen and haven't looked back since. What began as a general curiosity developed into a deeper focus on understanding how technology can fail, how vulnerabilities emerge, and how those weaknesses are exploited. This interest ultimately led me to pursue computer science and cybersecurity.</p>
+        <a href="about.html" class="btn">Read More</a>
+      </div>
 
-    <div class="about-content reveal from-bottom">
-      <h2>About <span>Me</span></h2>
-      <p>My passion for tech began before my preteen years. I built my first PC at the age of fourteen and haven't looked back since. What began as a general curiosity developed into a deeper focus on understanding how technology can fail, how vulnerabilities emerge, and how those weaknesses are exploited. This interest ultimately led me to pursue computer science and cybersecurity.</p>
-      <a href="about.html" class="btn">Read More</a>
+      <div class="about-side reveal from-bottom">
+        <div class="term">
+          <div class="term-bar">
+            <i></i><i></i><i></i>
+            <i class="term-title">whoami — bash</i>
+          </div>
+          <div class="term-body">
+            <div class="term-line"><i class="p">$</i><i class="c">whoami</i></div>
+            <div class="term-out">angel_santiago</div>
 
-      <div class="video-section">
-        <h3 class="video-heading">Link to my Latest Video</h3>
-        <div id="latest-video-container" class="video-container">
-          <div class="video-loading">Loading latest video...</div>
+            <div class="term-line"><i class="p">$</i><i class="c">cat profile.json</i></div>
+            <dl class="term-kv">
+              <dt>school</dt><dd>NYC College of Technology</dd>
+              <dt>focus</dt><dd>offensive security</dd>
+              <dt>based</dt><dd>Brooklyn, NY</dd>
+              <dt>seeking</dt><dd>internship / entry-level</dd>
+            </dl>
+
+            <div class="term-line"><i class="p">$</i><i class="c">ls ~/interests</i></div>
+            <div class="term-out">web-app-testing&nbsp; network-recon&nbsp; cryptography&nbsp; tooling&nbsp; ctf&nbsp; malware-analysis</div>
+          </div>
+        </div>
+
+        <div class="video-section">
+          <h3 class="video-heading">Link to my Latest YT Video</h3>
+          <div id="latest-video-container" class="video-container">
+            <div class="video-loading">Loading latest video...</div>
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
   <section class="technologies" id="technologies">
     <h2 class="section-title reveal from-bottom">My <span>Technologies</span></h2>
