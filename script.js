@@ -115,11 +115,11 @@ document.addEventListener('DOMContentLoaded', function() {
           alert('✅ Message sent successfully! Thank you for contacting me.');
           contactForm.reset();
         } else {
-          alert('❌ Something went wrong. Please try again or email me directly at angelsantiago3200@gmail.com');
+          alert('❌ Something went wrong. Please try again or email me directly at contact@zerodayblitz.com');
         }
       } catch (error) {
         console.error('Form submission error:', error);
-        alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
+        alert('❌ An error occurred. Please try again or email me directly at contact@zerodayblitz.com');
       } finally {
         submitButton.disabled = false;
         submitButton.innerHTML = originalButtonHTML;
