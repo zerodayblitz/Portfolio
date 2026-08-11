@@ -222,25 +222,61 @@
     </div>
   </section>
 
-  <section class="contact reveal-from-bottom" id="contact">
+<section class="contact reveal-from-bottom" id="contact">
   <h2 class="section-title reveal-from-bottom">Contact <span>Me</span></h2>
-  <p class="contact-subtitle">Feel Free to Send All Business Inquiries Here!</p>
-  <form id="contact-form" action="https://formspree.io/f/xqezqpgo" method="POST">
-    <div class="input-group">
-      <div class="input-box">
-        <input type="text" name="name" placeholder="Full Name" required autocomplete="name">
-        <input type="email" name="email" placeholder="Email" required autocomplete="email">
-      </div>
-      <div class="input-box">
-        <input type="tel" name="phone" placeholder="Phone Number" autocomplete="tel">
-        <input type="text" name="subject" placeholder="Subject" required>
+
+<div class="contact-grid">
+
+    <div class="contact-intro">
+      <h3>Let's Connect!</h3>
+      <p>Open to internships, entry-level offensive security roles, and collaboration. Business inquiries welcome.</p>
+
+      <div class="contact-list">
+        <a href="mailto:angelsantiago3200@gmail.com">
+          <i class="label">Email</i>
+          <i class="value">angelsantiago3200@gmail.com</i>
+        </a>
+        <a href="https://www.linkedin.com/in/angel-santiago-b36295295/" target="_blank" rel="noopener noreferrer">
+          <i class="label">LinkedIn</i>
+          <i class="value">Angel Santiago ↗</i>
+        </a>
+        <a href="https://github.com/zerodayblitz" target="_blank" rel="noopener noreferrer">
+          <i class="label">GitHub</i>
+          <i class="value">@zerodayblitz ↗</i>
+        </a>
+        <a href="https://tryhackme.com/p/zerodayblitz" target="_blank" rel="noopener noreferrer">
+          <i class="label">TryHackMe</i>
+          <i class="value">zerodayblitz ↗</i>
+        </a>
       </div>
     </div>
-    <div class="input-group-2">
-      <textarea name="message" placeholder="Your Message" rows="10" required></textarea>
-      <button type="submit" class="btn">Send Message</button>
-    </div>
-  </form>
+
+    <form id="contact-form" action="https://formspree.io/f/xqezqpgo" method="POST">
+  <div class="field">
+    <label for="name">Name</label>
+    <input type="text" id="name" name="name" placeholder="Your name" required autocomplete="name">
+  </div>
+  <div class="field">
+    <label for="email">Email</label>
+    <input type="email" id="email" name="email" placeholder="you@domain.com" required autocomplete="email">
+  </div>
+  <div class="field">
+    <label for="subject">Subject</label>
+    <input type="text" id="subject" name="subject" placeholder="What's this about?" required>
+  </div>
+  <div class="field">
+    <label for="message">Message</label>
+    <textarea id="message" name="message" placeholder="What are you working on?" rows="6" required></textarea>
+  </div>
+  <button type="submit" class="btn btn-outline">
+    Send message
+    <svg viewBox="0 0 14 14" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+      <path d="M2 7h10M8 3l4 4-4 4"/>
+    </svg>
+  </button>
+</form>
+
+  </div>
 </section>
 
   <footer class="footer">

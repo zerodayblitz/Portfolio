@@ -48,10 +48,6 @@ body {
   line-height: 1;
 }
 
-.about-page-text h2 span {
-  color: var(--main-color);
-}
-
 .about-page-text .page-subtitle {
   font-size: clamp(1.4rem, 2vw, 1.8rem);
   line-height: 1.6;

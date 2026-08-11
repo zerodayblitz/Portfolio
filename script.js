@@ -2,9 +2,6 @@ window.addEventListener("load", () => {
   document.body.classList.add("loaded");
 });
 
-// ========================================
-// INTERSECTION OBSERVER (SCROLL ANIMATIONS)
-// ========================================
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -18,22 +15,34 @@ document.querySelectorAll(".reveal, .reveal-from-bottom, .reveal-from-left, .rev
   revealObserver.observe(el);
 });
 
-// ========================================
-// MOBILE MENU TOGGLE
-// ========================================
 const menuIcon = document.querySelector('#menu-icon');
 const navbar = document.querySelector('.navbar');
 
 if (menuIcon && navbar) {
-  menuIcon.addEventListener('click', () => {
+  const closeMenu = () => {
+    menuIcon.classList.remove('bx-x');
+    navbar.classList.remove('active');
+  };
+
+  menuIcon.addEventListener('click', (e) => {
+    e.stopPropagation();
     menuIcon.classList.toggle('bx-x');
     navbar.classList.toggle('active');
   });
+
+  navbar.addEventListener('click', (e) => {
+    if (e.target.tagName === 'A') closeMenu();
+  });
+
+  document.addEventListener('click', (e) => {
+    if (!navbar.contains(e.target) && !menuIcon.contains(e.target)) closeMenu();
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') closeMenu();
+  });
 }
 
-// ========================================
-// YOUTUBE LATEST VIDEO LOADER
-// ========================================
 async function loadLatestVideo() {
   const container = document.getElementById('latest-video-container');
   if (!container) return;
@@ -77,26 +86,23 @@ async function loadLatestVideo() {
 
 window.addEventListener('DOMContentLoaded', loadLatestVideo);
 
-// ========================================
-// CONTACT FORM (AJAX SUBMISSION)
-// ========================================
 document.addEventListener('DOMContentLoaded', function() {
   const contactForm = document.getElementById('contact-form');
-  
+
   if (contactForm) {
     contactForm.addEventListener('submit', async function(e) {
       e.preventDefault();
-      
+
       const submitButton = this.querySelector('button[type="submit"]');
       if (!submitButton) return;
-      
+
+      const originalButtonHTML = submitButton.innerHTML;
       submitButton.disabled = true;
-      const originalButtonText = submitButton.textContent;
       submitButton.textContent = 'Sending...';
-      
+
       try {
         const formData = new FormData(this);
-        
+
         const response = await fetch(this.action, {
           method: 'POST',
           body: formData,
@@ -104,7 +110,7 @@ document.addEventListener('DOMContentLoaded', function() {
             'Accept': 'application/json'
           }
         });
-        
+
         if (response.ok) {
           alert('✅ Message sent successfully! Thank you for contacting me.');
           contactForm.reset();
@@ -116,11 +122,12 @@ document.addEventListener('DOMContentLoaded', function() {
         alert('❌ An error occurred. Please try again or email me directly at angelsantiago3200@gmail.com');
       } finally {
         submitButton.disabled = false;
-        submitButton.textContent = originalButtonText;
+        submitButton.innerHTML = originalButtonHTML;
       }
     });
   }
 });
+
 (function () {
   const el = document.getElementById('roleText');
   if (!el) return;
@@ -162,6 +169,7 @@ document.addEventListener('DOMContentLoaded', function() {
     return setTimeout(type, 32);
   })();
 })();
+
 (function () {
   const sections = document.querySelectorAll('section[id]');
   const links = document.querySelectorAll('.navbar a[href^="#"]');
